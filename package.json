@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "webpack-dev-server --mode development",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "build-min": "webpack ./src/index.js ./dist/app.js -p",
@@ -37,6 +38,6 @@
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.1",
     "vue-style-loader": "^4.1.2",
-    "webpack-dev-server": "^3.1.8"
+    "webpack-dev-server": "^3.1.10"
   }
 }

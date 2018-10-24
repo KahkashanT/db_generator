@@ -1,7 +1,7 @@
 <template>
     <div  >
         <div id="InputFormContainer" class="container"  v-for="(table, tableIndex) in tables">
-                    <<div >
+                    <div >
                         
                         <label  class="col-2">Field Name</label>
                         <label  class="col-2">Type</label>

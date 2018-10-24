@@ -9,6 +9,15 @@ module.exports={
         path:__dirname,
         filename:'dist/app.js'
     },
+     devServer: {
+    
+       
+        stats: "errors-only",
+        host: process.env.HOST, 
+        port: process.env.PORT,
+        open: true,
+        
+      },
     module:{
         rules:[
             {test:/\.css$/,
@@ -34,6 +43,7 @@ module.exports={
           }
         ]
     },
+   
      plugins: [
     
     new VueLoaderPlugin(),
