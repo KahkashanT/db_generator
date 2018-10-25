@@ -68,8 +68,8 @@
                      </select> 
                     <button class="btn btn-primary" @click="addField(tableIndex)" id="addField"><i class="fa fa-plus"></i></button>
                     <button  class="btn btn-primary" @click="generateData(tableIndex) " data-toggle="modal" data-target="#myModal" id="generate" >Generate</button> 
-                    <button  class="btn btn-primary"  data-toggle="modal" data-target="#myModal"  >Show</button>
-                    <Result v-bind:table="table"  v-bind:columns="table.columns" v-bind:colWidth="colWidth " ></Result>
+                    <button  class="btn btn-primary"  data-toggle="modal" data-target="#myModal"  @click="show(tableIndex)" >Show</button>
+                    <Result v-bind:table="resultTable"  v-bind:columns="resultTable.columns" v-bind:colWidth="resultTable.colWidth " ></Result>
         </div>
     </div>
 </template>
@@ -77,7 +77,7 @@
 <script>
     import Result from './Result.vue'
     export default{
-            name:'ManyToMany',
+            name:'entryHeader',
             data(){
                 return{
                     tables:[{
@@ -95,12 +95,13 @@
                             columns:[],
                             results:[],
                             rows:0,
+                            
                     }],
                     
                     categories:[],
                     types:[],
                  
-                    resultTable:[],
+                   resultTable:{},
                     tempResult:'',
                     foreignColumns:[],
                     colWidth:''
@@ -110,6 +111,7 @@
                 
                 var result = Object.keys(this.$faker());
                 this.categories = result;
+                
 
                 
             },
@@ -206,8 +208,9 @@
                     console.log("table data")
                    // console.log(self.tables[tableIndex])
                    console.log(self.tables[tableIndex].results)                  
-                   self.colWidth = (100/self.tables[tableIndex].columns.length)
+                   self.tables[tableIndex].colWidth = (100/self.tables[tableIndex].columns.length)
                     //console.log(self.colWidth)
+                    self.show(tableIndex)
                    document.getElementById('generate').blur(); 
                 },
                 
@@ -259,6 +262,10 @@
                    console.log("foreign values")
                    console.log(self.tables[tableIndex].foreignTableValues)
                   
+                },
+                show(tableIndex){
+                    var self = this
+                    self.resultTable = self.tables[tableIndex]
                 }
                 
             },
